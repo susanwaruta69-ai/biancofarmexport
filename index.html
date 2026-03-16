@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIANCO FARM EXPORTS | Fresh Herbs & Premium Avocados from Kenya</title>
+    <title>BIANCO FARM EXPORTS | Premium Fresh Produce from Kenya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -18,12 +18,14 @@
             --medium-text: #424242;
             --light-text: #757575;
             --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         
         body {
@@ -31,13 +33,43 @@
             line-height: 1.6;
             color: var(--dark-text);
             background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        
+        .scroll-top:hover {
+            background: var(--dark-orange);
+            transform: translateY(-5px);
         }
         
         /* Top Bar */
         .top-bar {
             background: var(--primary-orange);
             color: white;
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             font-size: 0.9rem;
         }
         
@@ -48,17 +80,50 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+            gap: 1rem;
+        }
+        
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
         .top-bar a {
             color: white;
             text-decoration: none;
-            margin-left: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .top-bar a:hover {
+            opacity: 0.8;
+            transform: translateX(3px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
         }
         
         .social-icons a {
-            margin-left: 1rem;
             color: white;
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
         }
         
         /* Header */
@@ -77,12 +142,19 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            gap: 2rem;
         }
         
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
         }
         
         .logo-icon {
@@ -94,6 +166,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--dark-green);
+            line-height: 1.2;
         }
         
         .logo-text span {
@@ -107,13 +180,31 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
         
         nav a {
             color: var(--dark-text);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
         }
         
         nav a:hover {
@@ -123,15 +214,21 @@
         .btn-quote {
             background: var(--primary-orange);
             color: white;
-            padding: 0.75rem 2rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            white-space: nowrap;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
         }
         
         .btn-quote:hover {
             background: var(--dark-orange);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
         
         .mobile-menu-btn {
@@ -148,27 +245,43 @@
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/kgLCxjGZ/farm-bg.jpg');
             background-size: cover;
             background-position: center;
-            height: 85vh;
+            background-attachment: fixed;
+            min-height: 85vh;
             display: flex;
             align-items: center;
-            padding: 0 2rem;
+            padding: 4rem 2rem;
+            position: relative;
         }
         
         .hero-content {
             max-width: 800px;
             color: white;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            font-weight: 700;
         }
         
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.95;
+            line-height: 1.6;
         }
         
         .btn-primary {
@@ -183,11 +296,33 @@
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
+            box-shadow: var(--shadow);
         }
         
         .btn-primary:hover {
             background: var(--dark-orange);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark-green);
         }
         
         /* Export Process Section */
@@ -205,6 +340,7 @@
             font-size: 2.8rem;
             color: var(--dark-text);
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
         
         .section-header p {
@@ -223,6 +359,12 @@
         .step {
             text-align: center;
             position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
         }
         
         .step-icon {
@@ -236,6 +378,11 @@
             font-size: 3rem;
             color: white;
             position: relative;
+            transition: all 0.3s;
+        }
+        
+        .step:hover .step-icon {
+            transform: rotateY(360deg);
         }
         
         .step:nth-child(odd) .step-icon {
@@ -264,9 +411,10 @@
         }
         
         .step h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--dark-text);
             margin-bottom: 0.5rem;
+            line-height: 1.4;
         }
         
         /* Products Section */
@@ -288,17 +436,24 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            cursor: pointer;
         }
         
         .product-category:hover {
             transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
         
         .product-category img {
             width: 100%;
             height: 280px;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-category:hover img {
+            transform: scale(1.1);
         }
         
         .product-info {
@@ -310,11 +465,13 @@
             font-size: 1.8rem;
             color: var(--dark-text);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
         
         .product-info p {
             color: var(--light-text);
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
         
         .btn-specs {
@@ -324,10 +481,12 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            transition: all 0.3s;
         }
         
         .btn-specs:hover {
             color: var(--dark-orange);
+            gap: 1rem;
         }
         
         /* About Section */
@@ -349,6 +508,7 @@
             font-size: 2.5rem;
             color: var(--dark-green);
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
         
         .about-text p {
@@ -360,7 +520,7 @@
         .about-image {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
         }
         
         .about-image img {
@@ -379,7 +539,7 @@
             max-width: 800px;
             margin: 3rem auto 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 3rem;
         }
         
@@ -389,6 +549,12 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
         
         .member-avatar {
@@ -398,6 +564,11 @@
             margin: 0 auto 1.5rem;
             overflow: hidden;
             border: 4px solid var(--primary-orange);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover .member-avatar {
+            transform: scale(1.1);
         }
         
         .member-avatar img {
@@ -410,6 +581,7 @@
             font-size: 1.6rem;
             margin-bottom: 0.3rem;
             color: var(--dark-text);
+            font-weight: 700;
         }
         
         .team-member .role {
@@ -437,6 +609,7 @@
             font-size: 2rem;
             margin-bottom: 1.5rem;
             color: var(--dark-text);
+            font-weight: 700;
         }
         
         .contact-item {
@@ -444,12 +617,37 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             align-items: flex-start;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        
+        .contact-item:hover {
+            background: white;
+            transform: translateX(5px);
         }
         
         .contact-item i {
             font-size: 1.5rem;
             color: var(--primary-orange);
             margin-top: 0.3rem;
+        }
+        
+        .contact-item strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--dark-text);
+        }
+        
+        .contact-item a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--dark-orange);
         }
         
         .contact-form {
@@ -476,11 +674,18 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
+            transition: all 0.3s;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
         }
         
         /* Footer */
@@ -502,12 +707,14 @@
         .footer-section h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
         
         .footer-section p, .footer-section a {
             color: rgba(255,255,255,0.85);
             text-decoration: none;
             line-height: 2;
+            transition: color 0.3s;
         }
         
         .footer-section a:hover {
@@ -522,6 +729,11 @@
             margin-bottom: 0.8rem;
         }
         
+        .footer-section i {
+            margin-right: 0.5rem;
+            color: var(--primary-orange);
+        }
+        
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
@@ -530,6 +742,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         
         .copyright {
@@ -540,76 +754,363 @@
             opacity: 0.85;
         }
         
-        /* Responsive */
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            padding: 3rem;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: var(--dark-text);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: var(--primary-orange);
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .spec-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .spec-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .spec-list li strong {
+            color: var(--dark-text);
+        }
+        
+        .spec-list li span {
+            color: var(--light-text);
+        }
+        
+        /* Mobile Responsive */
         @media (max-width: 992px) {
             .about-content, .contact-container {
                 grid-template-columns: 1fr;
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
             }
         }
         
         @media (max-width: 768px) {
+            .top-bar {
+                padding: 0.6rem 0;
+            }
+            
+            .top-bar-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .top-bar-left {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+            
+            .top-bar a {
+                font-size: 0.85rem;
+                justify-content: center;
+            }
+            
             .mobile-menu-btn {
                 display: block;
+            }
+            
+            .header-container {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            .logo-icon {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.8rem;
             }
             
             nav ul {
                 position: fixed;
                 top: 70px;
-                right: -100%;
+                left: -100%;
                 flex-direction: column;
                 background: white;
-                width: 80%;
-                height: calc(100vh - 70px);
+                width: 100%;
                 padding: 2rem;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.4s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transition: left 0.4s ease;
                 z-index: 999;
+                gap: 1.5rem;
             }
             
             nav ul.active {
-                right: 0;
+                left: 0;
             }
             
             nav a {
                 color: var(--dark-text);
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 padding: 0.8rem 0;
                 border-bottom: 1px solid #eee;
+                display: block;
+                width: 100%;
             }
             
-            .top-bar-content {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
+            .btn-quote {
+                display: none;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem;
+                min-height: 70vh;
             }
             
             .hero h1 {
-                font-size: 2.3rem;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+                display: block;
+                margin: 1rem 0;
+                text-align: center;
+            }
+            
+            .export-process {
+                padding: 3rem 1.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
             }
             
             .process-steps {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .step-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .products-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-category img {
+                height: 250px;
+            }
+            
+            .product-info {
+                padding: 1.5rem;
+            }
+            
+            .product-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .about-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .about-text h2 {
+                font-size: 2rem;
+            }
+            
+            .about-image img {
+                height: 300px;
+            }
+            
+            .team-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.6rem;
+            }
+            
+            footer {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .product-info h3 {
+                font-size: 1.3rem;
+            }
+            
+            .team-member h3 {
+                font-size: 1.4rem;
+            }
+            
+            .member-avatar {
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <div>
+            <div class="top-bar-left">
                 <a href="mailto:hello@biancofarmexports.co.ke"><i class="fas fa-envelope"></i> hello@biancofarmexports.co.ke</a>
                 <a href="tel:+254722107494"><i class="fas fa-phone"></i> +254 (0)722 107 494</a>
             </div>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#" onclick="alert('Follow us on Facebook!')"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" onclick="alert('Follow us on Twitter!')"><i class="fab fa-twitter"></i></a>
+                <a href="#" onclick="alert('Connect with us on LinkedIn!')"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" onclick="alert('Follow us on Instagram!')"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
@@ -617,7 +1118,7 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <div class="logo">
+            <div class="logo" onclick="window.scrollTo(0,0)">
                 <div class="logo-icon">
                     <i class="fas fa-leaf"></i>
                 </div>
@@ -648,7 +1149,10 @@
         <div class="hero-content">
             <h1>Premium Hass & Fuerte Avocados Exported with Consistent Quality</h1>
             <p>Sustainably grown avocados and mangoes, carefully graded and packed for reliable supply to Europe and Asia markets.</p>
-            <a href="#products" class="btn-primary">Explore Fruits</a>
+            <div>
+                <a href="#products" class="btn-primary">Explore Products</a>
+                <a href="#contact" class="btn-secondary">Get a Quote</a>
+            </div>
         </div>
     </section>
 
@@ -659,35 +1163,35 @@
             <p>Simple, Transparent Export Process</p>
         </div>
         <div class="process-steps">
-            <div class="step">
+            <div class="step" onclick="showProcessDetail(1)">
                 <div class="step-icon">
                     <i class="fas fa-envelope-open-text"></i>
                     <span class="step-number">01</span>
                 </div>
                 <h3>Inquiry & Product Selection</h3>
             </div>
-            <div class="step">
+            <div class="step" onclick="showProcessDetail(2)">
                 <div class="step-icon">
                     <i class="fas fa-file-invoice-dollar"></i>
                     <span class="step-number">02</span>
                 </div>
                 <h3>Specifications, Pricing & Availability</h3>
             </div>
-            <div class="step">
+            <div class="step" onclick="showProcessDetail(3)">
                 <div class="step-icon">
                     <i class="fas fa-check-circle"></i>
                     <span class="step-number">03</span>
                 </div>
                 <h3>Order Confirmation</h3>
             </div>
-            <div class="step">
+            <div class="step" onclick="showProcessDetail(4)">
                 <div class="step-icon">
                     <i class="fas fa-truck"></i>
                     <span class="step-number">04</span>
                 </div>
                 <h3>Harvest, Packing & Cold Chain Handling</h3>
             </div>
-            <div class="step">
+            <div class="step" onclick="showProcessDetail(5)">
                 <div class="step-icon">
                     <i class="fas fa-plane"></i>
                     <span class="step-number">05</span>
@@ -704,28 +1208,28 @@
             <p>Premium Quality Export Produce</p>
         </div>
         <div class="products-grid">
-            <div class="product-category">
+            <div class="product-category" onclick="showProductSpecs('fruits')">
                 <img src="https://i.ibb.co/qYNTd7LR/premium-avocados.jpg" alt="Fruits">
                 <div class="product-info">
                     <h3>FRUITS</h3>
                     <p>Avocado & Mango Exporter to Europe & Asia</p>
-                    <a href="#contact" class="btn-specs">VIEW PRODUCT SPECIFICATIONS <i class="fas fa-arrow-right"></i></a>
+                    <span class="btn-specs">VIEW PRODUCT SPECIFICATIONS <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
-            <div class="product-category">
+            <div class="product-category" onclick="showProductSpecs('vegetables')">
                 <img src="https://i.ibb.co/twPdxXy7/vegetables.jpg" alt="Vegetables">
                 <div class="product-info">
                     <h3>VEGETABLES</h3>
                     <p>Vegetable Exporter to Europe & Asia</p>
-                    <a href="#contact" class="btn-specs">VIEW PRODUCT SPECIFICATIONS <i class="fas fa-arrow-right"></i></a>
+                    <span class="btn-specs">VIEW PRODUCT SPECIFICATIONS <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
-            <div class="product-category">
+            <div class="product-category" onclick="showProductSpecs('herbs')">
                 <img src="https://i.ibb.co/rR8D74Gc/fresh-herbs.jpg" alt="Herbs">
                 <div class="product-info">
                     <h3>HERBS</h3>
                     <p>Fresh Herbs Exporter to Europe & Asia</p>
-                    <a href="#contact" class="btn-specs">VIEW PRODUCT SPECIFICATIONS <i class="fas fa-arrow-right"></i></a>
+                    <span class="btn-specs">VIEW PRODUCT SPECIFICATIONS <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>
@@ -739,6 +1243,7 @@
                 <p>Bianco Farm Exports is a leading B2B exporter of fresh fruits, vegetables, and herbs to Europe & Asia, providing premium Hass avocados, mangoes, vegetables, and fresh herbs with full certification, & reliable supply.</p>
                 <p>We work directly with certified smallholder farmers and commercial growers under controlled cultivation systems — ensuring traceability, freshness, and compliance with global food safety standards.</p>
                 <p><strong>Our Commitment:</strong> Export-only focus, farm-to-port traceability, cold chain integrity, and consistent quality grading.</p>
+                <a href="#contact" class="btn-primary" style="margin-top: 1rem;">Work With Us</a>
             </div>
             <div class="about-image">
                 <img src="https://i.ibb.co/21W1R161/farm-about.jpg" alt="Kenyan Farm">
@@ -781,14 +1286,14 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Contact Information</h3>
-                <div class="contact-item">
+                <div class="contact-item" onclick="window.location.href='tel:+254722107494'">
                     <i class="fas fa-phone"></i>
                     <div>
                         <strong>Phone</strong><br>
                         <a href="tel:+254722107494">+254 (0)722 107 494</a>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item" onclick="window.location.href='mailto:susanwaruta69@gmail.com'">
                     <i class="fas fa-envelope"></i>
                     <div>
                         <strong>Email</strong><br>
@@ -837,7 +1342,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" class="form-control" rows="4" required placeholder="Tell us about your requirements..."></textarea>
+                        <textarea id="message" class="form-control" required placeholder="Tell us about your requirements..."></textarea>
                     </div>
                     <button type="submit" class="btn-primary" style="width: 100%;">SEND INQUIRY</button>
                 </form>
@@ -853,19 +1358,20 @@
                 <p>Bianco Farm Exports is a leading B2B exporter of fresh fruits, vegetables, and herbs to Europe & Asia, providing premium Hass avocados, mangoes, vegetables, and fresh herbs with full certification, & reliable supply.</p>
             </div>
             <div class="footer-section">
-                <h3>Products</h3>
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#products">Fruits</a></li>
-                    <li><a href="#products">Vegetables</a></li>
-                    <li><a href="#products">Herbs</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Resources</h3>
+                <h3>Products</h3>
                 <ul>
-                    <li><a href="#process">Export Process</a></li>
-                    <li><a href="#about">Why Bianco</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#" onclick="showProductSpecs('fruits')">Fruits</a></li>
+                    <li><a href="#" onclick="showProductSpecs('vegetables')">Vegetables</a></li>
+                    <li><a href="#" onclick="showProductSpecs('herbs')">Herbs</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -887,6 +1393,19 @@
         </div>
     </footer>
 
+    <!-- Product Specifications Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Specifications</h2>
+            </div>
+            <div id="modalBody">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -907,7 +1426,170 @@
             });
         });
         
-        // Smooth scrolling for anchor links
+        // Scroll to Top Button
+        const scrollTop = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Product Specifications Data
+        const productSpecs = {
+            fruits: {
+                title: 'FRESH FRUITS - Specifications',
+                content: `
+                    <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Premium Hass & Fuerte Avocados</h3>
+                    <ul class="spec-list">
+                        <li><strong>Varieties:</strong> <span>Hass, Fuerte</span></li>
+                        <li><strong>Grade:</strong> <span>Class I, Class II (Export Quality)</span></li>
+                        <li><strong>Sizes:</strong> <span>8-32 count per carton</span></li>
+                        <li><strong>Packaging:</strong> <span>4kg cartons, 18kg cartons</span></li>
+                        <li><strong>Certifications:</strong> <span>GLOBALG.A.P., GRASP, BRC</span></li>
+                        <li><strong>Origin:</strong> <span>Kenyan Highlands</span></li>
+                        <li><strong>Season:</strong> <span>Year-round supply</span></li>
+                        <li><strong>MOQ:</strong> <span>1 x 40ft container</span></li>
+                    </ul>
+                    <h3 style="color: var(--primary-green); margin: 2rem 0 1rem;">Fresh Mangoes</h3>
+                    <ul class="spec-list">
+                        <li><strong>Varieties:</strong> <span>Apple, Ngowe, Tommy Atkins</span></li>
+                        <li><strong>Grade:</strong> <span>Export Quality</span></li>
+                        <li><strong>Sizes:</strong> <span>10-20 count per carton</span></li>
+                        <li><strong>Packaging:</strong> <span>Export cartons with trays</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" onclick="closeModal()" style="margin-top: 2rem; display: inline-block;">Request Quote</a>
+                `
+            },
+            vegetables: {
+                title: 'FRESH VEGETABLES - Specifications',
+                content: `
+                    <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Export Quality Vegetables</h3>
+                    <ul class="spec-list">
+                        <li><strong>Products:</strong> <span>Green Beans, Baby Corn, Snow Peas, Sugar Snaps</span></li>
+                        <li><strong>Grade:</strong> <span>Class I (Premium Export)</span></li>
+                        <li><strong>Packaging:</strong> <span>3kg, 5kg cartons or as per requirement</span></li>
+                        <li><strong>Certifications:</strong> <span>GLOBALG.A.P., ISO 22000</span></li>
+                        <li><strong>Cold Chain:</strong> <span>Pre-cooled & temperature controlled</span></li>
+                        <li><strong>Shelf Life:</strong> <span>14-21 days</span></li>
+                        <li><strong>Supply:</strong> <span>Year-round</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" onclick="closeModal()" style="margin-top: 2rem; display: inline-block;">Request Quote</a>
+                `
+            },
+            herbs: {
+                title: 'FRESH HERBS - Specifications',
+                content: `
+                    <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Premium Fresh Herbs</h3>
+                    <ul class="spec-list">
+                        <li><strong>Varieties:</strong> <span>Rosemary, Basil, Mint, Chives, Thyme, Oregano, Sage</span></li>
+                        <li><strong>Grade:</strong> <span>Premium Export Quality</span></li>
+                        <li><strong>Packaging:</strong> <span>50g, 100g punnets or bunches</span></li>
+                        <li><strong>Shelf Life:</strong> <span>10-14 days</span></li>
+                        <li><strong>Certifications:</strong> <span>GLOBALG.A.P., GRASP</span></li>
+                        <li><strong>Harvest:</strong> <span>Fresh daily harvest</span></li>
+                        <li><strong>Cold Chain:</strong> <span>Immediate cooling after harvest</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" onclick="closeModal()" style="margin-top: 2rem; display: inline-block;">Request Quote</a>
+                `
+            }
+        };
+        
+        // Process Details
+        const processDetails = {
+            1: {
+                title: 'Inquiry & Product Selection',
+                content: '<p>Send us your inquiry with product requirements, quantities, and destination. Our team will respond within 24 hours with product options and initial consultation.</p>'
+            },
+            2: {
+                title: 'Specifications, Pricing & Availability',
+                content: '<p>We provide detailed product specifications, competitive pricing, availability schedule, and shipping options tailored to your market requirements.</p>'
+            },
+            3: {
+                title: 'Order Confirmation',
+                content: '<p>Once you confirm the order, we prepare proforma invoice, confirm harvest dates, and arrange all necessary documentation and certifications.</p>'
+            },
+            4: {
+                title: 'Harvest, Packing & Cold Chain',
+                content: '<p>Products are harvested at peak maturity, immediately pre-cooled, carefully graded, packed in export-quality packaging, and stored in temperature-controlled facilities.</p>'
+            },
+            5: {
+                title: 'Export & Delivery',
+                content: '<p>We handle all export documentation, customs clearance, and coordinate with shipping lines/airlines for timely delivery to Europe or Asia ports.</p>'
+            }
+        };
+        
+        // Show Product Specifications
+        function showProductSpecs(product) {
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            if (productSpecs[product]) {
+                modalTitle.textContent = productSpecs[product].title;
+                modalBody.innerHTML = productSpecs[product].content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Show Process Detail
+        function showProcessDetail(step) {
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            if (processDetails[step]) {
+                modalTitle.textContent = `Step ${step}: ${processDetails[step].title}`;
+                modalBody.innerHTML = processDetails[step].content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Form submission
+        const inquiryForm = document.getElementById('inquiryForm');
+        if(inquiryForm) {
+            inquiryForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    product: document.getElementById('product').value,
+                    message: document.getElementById('message').value
+                };
+                
+                // Show success message
+                alert('Thank you for your inquiry! We have received your message and will contact you within 24 hours.');
+                inquiryForm.reset();
+            });
+        }
+        
+        // Smooth scroll for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -924,15 +1606,28 @@
             });
         });
         
-        // Form submission handling
-        const inquiryForm = document.getElementById('inquiryForm');
-        if(inquiryForm) {
-            inquiryForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your inquiry! We will contact you shortly.');
-                inquiryForm.reset();
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
-        }
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
