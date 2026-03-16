@@ -275,15 +275,12 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             height: 400px;
-            background: linear-gradient(45deg, var(--light-green), var(--secondary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 500;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 1rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Products Section */
@@ -309,14 +306,6 @@
         .product-img {
             height: 220px;
             background: var(--light-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-green);
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 1rem;
             overflow: hidden;
         }
         
@@ -324,6 +313,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            animation: float 6s ease-in-out infinite;
         }
         
         .product-content {
@@ -489,15 +479,15 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: var(--light-green);
             margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-green);
-            font-weight: 600;
-            font-size: 1.1rem;
+            overflow: hidden;
             border: 4px solid var(--secondary-green);
+        }
+        
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .team-member h3 {
@@ -767,10 +757,6 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        
-        .product-img {
-            animation: float 6s ease-in-out infinite;
-        }
     </style>
 </head>
 <body>
@@ -828,7 +814,7 @@
                 <p>With our farm-to-port traceability system and cold-chain integrity, we guarantee that every product maintains its peak freshness and quality from harvest to delivery.</p>
             </div>
             <div class="about-image">
-                <img src="https://i.ibb.co/4ggX53Xw/farm-landscape.jpg" alt="Kenyan Farm" style="width:100%; height:100%; object-fit:cover;">
+                <img src="https://i.ibb.co/4ggX53Xw/farm-landscape.jpg" alt="Kenyan Farm">
             </div>
         </div>
     </section>
@@ -989,19 +975,19 @@
         <div class="team-grid">
             <div class="team-member">
                 <div class="member-avatar">
-                    <i class="fas fa-user-tie fa-2x"></i>
+                    <img src="https://i.ibb.co/j9XTZ2yd/susan-waruta.jpg" alt="Susan Waruta - CEO">
                 </div>
                 <h3>Susan Waruta</h3>
-                <span class="role">Director</span>
-                <p>Over 15 years of experience in agricultural export management and international trade compliance.</p>
+                <span class="role">Chief Executive Officer (CEO)</span>
+                <p>Over 15 years of experience in agricultural export management and international trade compliance. Leading BIANCO FARM EXPORTS with vision and dedication to quality.</p>
             </div>
             <div class="team-member">
                 <div class="member-avatar">
-                    <i class="fas fa-user-tie fa-2x"></i>
+                    <img src="https://i.ibb.co/PZj6x5j9/josephat-mwangi.jpg" alt="Josephat Mwangi - Sales Manager">
                 </div>
                 <h3>Josephat Mwangi</h3>
-                <span class="role">Sales Manager</span>
-                <p>Specialist in global market development and building long-term partnerships with international buyers.</p>
+                <span class="role">Head of Marketing & Sales Manager</span>
+                <p>Specialist in global market development and building long-term partnerships with international buyers. Expert in connecting Kenyan farms to worldwide markets.</p>
             </div>
         </div>
     </section>
