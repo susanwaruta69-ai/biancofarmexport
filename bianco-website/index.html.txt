@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIANCO FARM EXPORTS | Fresh Herbs & Premium Avocados from Kenya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --secondary-green: #4caf50;
+            --light-green: #e8f5e9;
+            --dark-green: #1b5e20;
+            --earth-brown: #5d4037;
+            --cream: #fffdf5;
+            --white: #ffffff;
+            --dark-text: #212121;
+            --medium-text: #424242;
+            --light-text: #757575;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--white);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: #a5d6a7;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #a5d6a7;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a5d6a7;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1595183313422-7e4e7d8a5c29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 2rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-green);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-green);
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-green);
+        }
+        
+        .btn-primary {
+            background: var(--earth-brown);
+            border-color: var(--earth-brown);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--earth-brown);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.75rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: var(--secondary-green);
+            border-radius: 3px;
+        }
+        
+        .section-title p {
+            color: var(--medium-text);
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: var(--medium-text);
+        }
+        
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            background: linear-gradient(45deg, var(--light-green), var(--secondary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .product-img {
+            height: 220px;
+            background: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .product-content {
+            padding: 1.8rem;
+        }
+        
+        .product-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .product-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .product-content ul li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--medium-text);
+        }
+        
+        .product-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-weight: bold;
+        }
+        
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.2rem;
+        }
+        
+        .cert-badge {
+            background: var(--light-green);
+            color: var(--dark-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Why Choose Us */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            background: var(--cream);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            background: var(--light-green);
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.2rem;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        /* Sustainability */
+        .sustainability {
+            background: var(--light-green);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .sustainability h3 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        
+        .sustainability-item {
+            padding: 1rem;
+        }
+        
+        .sustainability-item i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+        
+        .sustainability-item p {
+            font-weight: 500;
+            color: var(--medium-text);
+        }
+        
+        /* Target Buyers */
+        .buyers-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .buyer-card {
+            background: var(--white);
+            padding: 1.8rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary-green);
+        }
+        
+        .buyer-card h4 {
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .member-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--light-green);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 4px solid var(--secondary-green);
+        }
+        
+        .team-member h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark-green);
+        }
+        
+        .team-member .role {
+            color: var(--primary-green);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            min-width: 45px;
+            height: 45px;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 0.3rem;
+            color: var(--dark-green);
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary-green);
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--medium-text);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-green);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-green);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem 2rem 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .footer-logo span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-green);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.85;
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Image Placeholder Styling */
+        .img-placeholder {
+            background: linear-gradient(135deg, var(--light-green), var(--secondary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .hero .img-placeholder {
+            background: rgba(46, 125, 50, 0.85);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 80%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.4s ease;
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav a {
+                color: var(--dark-text);
+                font-size: 1.3rem;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            nav a::after {
+                display: none;
+            }
+            
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                height: 85vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.1rem;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.95rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+        }
+        
+        /* Animation for product images */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .product-img {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="logo-text">
+                    BIANCO FARM EXPORTS
+                    <span>Fresh Herbs & Premium Avocados</span>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Fresh Herbs & Premium Avocados — Direct from Kenya</h1>
+            <p>Export-quality produce grown sustainably in Kenya's optimal highland zones, delivered fresh to international markets.</p>
+            <div class="cta-buttons">
+                <a href="#products" class="btn">Explore Our Products</a>
+                <a href="#contact" class="btn btn-outline">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>Who We Are</h2>
+            <p>Specialized agricultural exporters dedicated to quality and sustainability</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Excellence in Every Export</h3>
+                <p>Bianco Farm Exports is a specialized agricultural exporter based in Kenya, dedicated exclusively to supplying fresh herbs and premium avocados to international markets. We work directly with certified smallholder farmers and commercial growers under controlled cultivation systems — ensuring traceability, freshness, and compliance with global food safety standards.</p>
+                <p>We do not import or distribute locally. Our sole focus: exporting high-quality, sustainably grown produce from Kenya to your kitchen.</p>
+                <p>With our farm-to-port traceability system and cold-chain integrity, we guarantee that every product maintains its peak freshness and quality from harvest to delivery.</p>
+            </div>
+            <div class="about-image img-placeholder">
+                <div>
+                    <i class="fas fa-seedling fa-3x" style="margin-bottom: 1rem;"></i>
+                    <div>Farm Fresh Produce<br>From Kenya's Highlands</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" style="background-color: var(--cream);">
+        <div class="section-title">
+            <h2>Core Export Products</h2>
+            <p>Premium quality herbs and avocados, handled with care from farm to port</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Fresh Herbs Card -->
+            <div class="product-card">
+                <div class="product-img img-placeholder">
+                    <div>
+                        <i class="fas fa-leaf fa-2x" style="margin-bottom: 0.8rem;"></i>
+                        <div>Fresh Herbs Collection<br>Cold-Chain Handled</div>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3><i class="fas fa-leaf"></i> Fresh Herbs</h3>
+                    <p>Harvested at peak aroma, packed within hours, and shipped via cold chain to preserve freshness:</p>
+                    <ul>
+                        <li><strong>Rosemary</strong> – Robust, fragrant needles; long shelf life</li>
+                        <li><strong>Basil</strong> – Vibrant green leaves; aromatic and versatile</li>
+                        <li><strong>Mint</strong> – Bright, refreshing; perfect for beverages & dishes</li>
+                        <li><strong>Chives</strong> – Delicate onion flavor; carefully harvested</li>
+                        <li><strong>Thyme</strong> – Highly aromatic; resilient leaves for fine dining</li>
+                        <li><strong>Oregano</strong> – Fragrant, robust flavor for global cuisines</li>
+                        <li><strong>Sage</strong> – Earthy, pungent aroma for sauces and blends</li>
+                    </ul>
+                    <div class="certifications">
+                        <span class="cert-badge">GLOBALG.A.P.</span>
+                        <span class="cert-badge">GRASP Certified</span>
+                        <span class="cert-badge">Phytosanitary Docs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Avocados Card -->
+            <div class="product-card">
+                <div class="product-img img-placeholder">
+                    <div>
+                        <i class="fas fa-apple-alt fa-2x" style="margin-bottom: 0.8rem;"></i>
+                        <div>Premium Avocado Products<br>Export-Ready Quality</div>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3><i class="fas fa-apple-alt"></i> Premium Avocados</h3>
+                    <p>Grown in Kenya's optimal highland zones, processed under certified facilities:</p>
+                    <ul>
+                        <li><strong>Fresh Hass Avocados</strong> – Grade A, export-ready</li>
+                        <li><strong>IQF Frozen Avocado Halves & Cubes</strong></li>
+                        <li><strong>IQF Frozen Avocado Pulp</strong></li>
+                        <li><strong>Frozen Guacamole</strong> – Retail & foodservice formats</li>
+                    </ul>
+                    <div class="certifications">
+                        <span class="cert-badge">BRC Certified</span>
+                        <span class="cert-badge">ISO 22000</span>
+                        <span class="cert-badge">Organic (Optional)</span>
+                        <span class="cert-badge">GLOBALG.A.P.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us">
+        <div class="section-title">
+            <h2>Why Buyers Choose Us</h2>
+            <p>Reliable partnerships built on quality, transparency, and expertise</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <h3>Export-Only Focus</h3>
+                <p>No local sales. We specialize in international logistics, documentation, and compliance for seamless global delivery.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-truck-loading"></i>
+                </div>
+                <h3>Farm-to-Port Traceability</h3>
+                <p>Every batch tracked from farm plot to container. Full transparency with digital tracking for complete supply chain visibility.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3>Cold Chain Integrity</h3>
+                <p>From harvest to packing house to port — temperature-controlled handling ensures peak freshness and extended shelf life.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Consistent Quality</h3>
+                <p>Uniform sizing, color, and ripeness. Custom grading available upon request to meet your specific market requirements.</p>
+            </div>
+        </div>
+        
+        <div class="sustainability">
+            <h3>Our Commitment to Sustainability</h3>
+            <div class="sustainability-grid">
+                <div class="sustainability-item">
+                    <i class="fas fa-users"></i>
+                    <p>500+ Smallholder Farmers</p>
+                </div>
+                <div class="sustainability-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <p>Fair Pricing & Timely Payments</p>
+                </div>
+                <div class="sustainability-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p>Post-Harvest Training</p>
+                </div>
+                <div class="sustainability-item">
+                    <i class="fas fa-tint"></i>
+                    <p>Water Conservation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Buyers Section -->
+    <section id="buyers" style="background-color: var(--cream);">
+        <div class="section-title">
+            <h2>Target Buyers & Partners</h2>
+            <p>We welcome inquiries from global partners seeking premium Kenyan produce</p>
+        </div>
+        
+        <div class="buyers-list">
+            <div class="buyer-card">
+                <h4><i class="fas fa-globe"></i> International Importers</h4>
+                <p>Herb importers & distributors across EU, UK, Middle East, and Asia seeking reliable supply chains.</p>
+            </div>
+            <div class="buyer-card">
+                <h4><i class="fas fa-store"></i> Retail Chains</h4>
+                <p>Supermarkets and retail groups looking for fresh herbs and avocados with consistent quality and certification.</p>
+            </div>
+            <div class="buyer-card">
+                <h4><i class="fas fa-utensils"></i> Foodservice Operators</h4>
+                <p>Hotels, restaurant groups, and catering services requiring premium ingredients with reliable delivery schedules.</p>
+            </div>
+            <div class="buyer-card">
+                <h4><i class="fas fa-box-open"></i> Private Label Manufacturers</h4>
+                <p>Frozen food producers and private label brands seeking high-quality avocado products and fresh herbs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="section-title">
+            <h2>Our Leadership Team</h2>
+            <p>Experienced professionals dedicated to your success</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user-tie fa-2x"></i>
+                </div>
+                <h3>Susan Waruta</h3>
+                <span class="role">Director</span>
+                <p>Over 15 years of experience in agricultural export management and international trade compliance.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user-tie fa-2x"></i>
+                </div>
+                <h3>Josephat Mwangi</h3>
+                <span class="role">Sales Manager</span>
+                <p>Specialist in global market development and building long-term partnerships with international buyers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--cream);">
+        <div class="section-title">
+            <h2>Let's Connect</h2>
+            <p>Looking for a trusted Kenyan exporter of fresh herbs or premium avocados?</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Our Location</h4>
+                        <p>Nairobi, Kenya</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Call Us</h4>
+                        <p><a href="tel:+254722107494">+254 722 107494</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:susanwaruta69@gmail.com">susanwaruta69@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Certifications</h4>
+                        <p>GLOBALG.A.P., GRASP, BRC, ISO 22000, Organic (optional)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="inquiryForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" class="form-control" required placeholder="Your company">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required placeholder="your.email@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Product Interest</label>
+                        <select id="product" class="form-control" required>
+                            <option value="">Select a product</option>
+                            <option value="herbs">Fresh Herbs</option>
+                            <option value="avocados">Premium Avocados</option>
+                            <option value="both">Both Products</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span class="footer-logo">
+                BIANCO FARM EXPORTS
+                <span>Fresh Herbs & Premium Avocados</span>
+            </span>
+            <p>From Kenyan farms to your kitchen — fresh, safe, and sustainably sourced.</p>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <p class="copyright">
+                &copy; 2024 BIANCO FARM EXPORTS. All Rights Reserved. <br>
+                Certified. Compliant. Committed.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handling
+        const inquiryForm = document.getElementById('inquiryForm');
+        if(inquiryForm) {
+            inquiryForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // In a real implementation, this would send data to a server
+                alert('Thank you for your inquiry! We will contact you shortly.');
+                inquiryForm.reset();
+            });
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+                header.style.background = 'linear-gradient(135deg, #1b5e20, #0d3d14)';
+            } else {
+                header.style.boxShadow = 'var(--shadow)';
+                header.style.background = 'linear-gradient(135deg, var(--primary-green), var(--dark-green))';
+            }
+        });
+    </script>
+</body>
+</html>
