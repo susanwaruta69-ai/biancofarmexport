@@ -123,7 +123,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1595183313422-7e4e7d8a5c29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.ibb.co/4ggX53Xw/farm-landscape.jpg');
             background-size: cover;
             background-position: center;
             height: 90vh;
@@ -317,6 +317,13 @@
             font-size: 1.1rem;
             text-align: center;
             padding: 1rem;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .product-content {
@@ -652,33 +659,6 @@
             border-top: 1px solid rgba(255,255,255,0.2);
         }
         
-        /* Image Placeholder Styling */
-        .img-placeholder {
-            background: linear-gradient(135deg, var(--light-green), var(--secondary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 500;
-            text-align: center;
-            padding: 1rem;
-        }
-        
-        .hero .img-placeholder {
-            background: rgba(46, 125, 50, 0.85);
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            z-index: 1;
-        }
-        
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content {
@@ -847,11 +827,8 @@
                 <p>We do not import or distribute locally. Our sole focus: exporting high-quality, sustainably grown produce from Kenya to your kitchen.</p>
                 <p>With our farm-to-port traceability system and cold-chain integrity, we guarantee that every product maintains its peak freshness and quality from harvest to delivery.</p>
             </div>
-            <div class="about-image img-placeholder">
-                <div>
-                    <i class="fas fa-seedling fa-3x" style="margin-bottom: 1rem;"></i>
-                    <div>Farm Fresh Produce<br>From Kenya's Highlands</div>
-                </div>
+            <div class="about-image">
+                <img src="https://i.ibb.co/4ggX53Xw/farm-landscape.jpg" alt="Kenyan Farm" style="width:100%; height:100%; object-fit:cover;">
             </div>
         </div>
     </section>
@@ -866,11 +843,8 @@
         <div class="products-grid">
             <!-- Fresh Herbs Card -->
             <div class="product-card">
-                <div class="product-img img-placeholder">
-                    <div>
-                        <i class="fas fa-leaf fa-2x" style="margin-bottom: 0.8rem;"></i>
-                        <div>Fresh Herbs Collection<br>Cold-Chain Handled</div>
-                    </div>
+                <div class="product-img">
+                    <img src="https://i.ibb.co/TMNf9KjD/rosemary.jpg" alt="Fresh Herbs Collection">
                 </div>
                 <div class="product-content">
                     <h3><i class="fas fa-leaf"></i> Fresh Herbs</h3>
@@ -894,11 +868,8 @@
             
             <!-- Avocados Card -->
             <div class="product-card">
-                <div class="product-img img-placeholder">
-                    <div>
-                        <i class="fas fa-apple-alt fa-2x" style="margin-bottom: 0.8rem;"></i>
-                        <div>Premium Avocado Products<br>Export-Ready Quality</div>
-                    </div>
+                <div class="product-img">
+                    <img src="https://i.ibb.co/Hp4X1N5c/avocados.jpg" alt="Premium Avocado Products">
                 </div>
                 <div class="product-content">
                     <h3><i class="fas fa-apple-alt"></i> Premium Avocados</h3>
@@ -1181,7 +1152,6 @@
         if(inquiryForm) {
             inquiryForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                // In a real implementation, this would send data to a server
                 alert('Thank you for your inquiry! We will contact you shortly.');
                 inquiryForm.reset();
             });
